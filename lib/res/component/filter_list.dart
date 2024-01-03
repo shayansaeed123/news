@@ -1,0 +1,1 @@
+enum FilterList{bbcNews,alJazeeraNews,bbcSportNews,aryNews,argaamNews,cnnNews}
