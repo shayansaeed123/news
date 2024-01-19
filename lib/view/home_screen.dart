@@ -288,20 +288,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         fontWeight: FontWeight.w700,
                                                         fontSize: 15)),
                                                 Spacer(),
-                                                Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                  children: [
-                                                    Text(snapshot.data!.articles![index].source!.name.toString(),
-                                                        style: GoogleFonts.poppins().copyWith(
-                                                            color: Colors.black,
-                                                            fontWeight: FontWeight.w600,
-                                                            fontSize: 14)),
-                                                    Text(dateFormat.format(date),
-                                                        style: GoogleFonts.poppins().copyWith(
-                                                            color: Colors.black,
-                                                            fontWeight: FontWeight.w500,
-                                                            fontSize: 15)),
-                                                  ],
+                                                SingleChildScrollView(
+                                                  scrollDirection: Axis.horizontal,
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Text(snapshot.data!.articles![index].source!.name.toString(),
+                                                          style: GoogleFonts.poppins().copyWith(
+                                                              color: Colors.black,
+                                                              fontWeight: FontWeight.w600,
+                                                              fontSize: 14)),
+                                                      SizedBox(width: width * 0.03,),
+                                                      Text(dateFormat.format(date),
+                                                          style: GoogleFonts.poppins().copyWith(
+                                                              color: Colors.black,
+                                                              fontWeight: FontWeight.w500,
+                                                              fontSize: 15)),
+                                                    ],
+                                                  ),
                                                 ),
                                               ],
                                             ),

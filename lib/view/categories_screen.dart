@@ -80,95 +80,95 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         },
                       ),
                     ),
-                    Expanded(
-                      child: FutureBuilder(
-                        future: newsViewModel.fetchCategoriesNewsApi(categoriesName),
-                        builder: (context,AsyncSnapshot<CategoriesNewsModel> snapshot) {
-                          if(snapshot.connectionState == ConnectionState.waiting){
-                            return Container(
-                              child: Center(
-                                child: SpinKitWave(
-                                  color: Colors.black,
-                                  size: 40,
-                                ),
-                              ),
-                            );
-                          }else{
-                            return ListView.builder(
-                              itemCount: snapshot.data!.articles!.length,
-                              itemBuilder: (context, index) {
-                                DateTime date = DateTime.parse(snapshot.data!.articles![index].publishedAt.toString());
-                                return Padding(
-                                  padding: EdgeInsets.only(top: height * 0.02),
-                                  child: InkWell(
-                                    onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                        return NewsDetailsScreen(
-                                            newsTitle: snapshot.data!.articles![index].title.toString(),
-                                            newsImage: snapshot.data!.articles![index].urlToImage.toString(),
-                                            nwsContent: snapshot.data!.articles![index].content.toString(),
-                                            newsSource: snapshot.data!.articles![index].source!.name.toString(),
-                                            newsDescription: snapshot.data!.articles![index].description.toString(),
-                                            newsAuthor: snapshot.data!.articles![index].author.toString(),
-                                            newsDate: format.format(date));
-                                      },));
-                                    },
-                                    child: Row(
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(15),
-                                          child: CachedNetworkImage(
-                                            height: height * 0.2,
-                                            width: width * 0.3,
-                                            imageUrl: snapshot.data!.articles![index].urlToImage.toString(),
-                                            fit: BoxFit.cover,
-                                            placeholder: (context, url) => spinKit,
-                                            errorWidget: (context, url, error) => Icon(Icons.error_outline,color: Colors.red),
-                                          ),
-                                        ),
-                                        Expanded(
-                                            child: Container(
-                                              height: height * .2,
-                                              padding: EdgeInsets.only(left: width * 0.03),
-                                              child: Column(
-                                                children: [
-                                                  Text(snapshot.data!.articles![index].title.toString(),
-                                                      maxLines: 3,
-                                                      style: GoogleFonts.poppins().copyWith(
-                                                          color: Colors.black,
-                                                          fontWeight: FontWeight.w700,
-                                                          fontSize: 15)),
-                                                  Spacer(),
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    children: [
-                                                      Text(snapshot.data!.articles![index].source!.name.toString(),
-                                                          style: GoogleFonts.poppins().copyWith(
-                                                              color: Colors.black,
-                                                              fontWeight: FontWeight.w600,
-                                                              fontSize: 14)),
-                                                      Text(format.format(date),
-                                                          style: GoogleFonts.poppins().copyWith(
-                                                              color: Colors.black,
-                                                              fontWeight: FontWeight.w500,
-                                                              fontSize: 15)),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            )
-                                        ),
-
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
-                          }
-                        },
-                      ),
-                    ),
+                    // Expanded(
+                    //   child: FutureBuilder(
+                    //     future: newsViewModel.fetchCategoriesNewsApi(categoriesName),
+                    //     builder: (context,AsyncSnapshot<CategoriesNewsModel> snapshot) {
+                    //       if(snapshot.connectionState == ConnectionState.waiting){
+                    //         return Container(
+                    //           child: Center(
+                    //             child: SpinKitWave(
+                    //               color: Colors.black,
+                    //               size: 40,
+                    //             ),
+                    //           ),
+                    //         );
+                    //       }else{
+                    //         return ListView.builder(
+                    //           itemCount: snapshot.data!.articles!.length,
+                    //           itemBuilder: (context, index) {
+                    //             DateTime date = DateTime.parse(snapshot.data!.articles![index].publishedAt.toString());
+                    //             return Padding(
+                    //               padding: EdgeInsets.only(top: height * 0.02),
+                    //               child: InkWell(
+                    //                 onTap: (){
+                    //                   Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    //                     return NewsDetailsScreen(
+                    //                         newsTitle: snapshot.data!.articles![index].title.toString(),
+                    //                         newsImage: snapshot.data!.articles![index].urlToImage.toString(),
+                    //                         nwsContent: snapshot.data!.articles![index].content.toString(),
+                    //                         newsSource: snapshot.data!.articles![index].source!.name.toString(),
+                    //                         newsDescription: snapshot.data!.articles![index].description.toString(),
+                    //                         newsAuthor: snapshot.data!.articles![index].author.toString(),
+                    //                         newsDate: format.format(date));
+                    //                   },));
+                    //                 },
+                    //                 child: Row(
+                    //                   children: [
+                    //                     ClipRRect(
+                    //                       borderRadius: BorderRadius.circular(15),
+                    //                       child: CachedNetworkImage(
+                    //                         height: height * 0.2,
+                    //                         width: width * 0.3,
+                    //                         imageUrl: snapshot.data!.articles![index].urlToImage.toString(),
+                    //                         fit: BoxFit.cover,
+                    //                         placeholder: (context, url) => spinKit,
+                    //                         errorWidget: (context, url, error) => Icon(Icons.error_outline,color: Colors.red),
+                    //                       ),
+                    //                     ),
+                    //                     Expanded(
+                    //                         child: Container(
+                    //                           height: height * .2,
+                    //                           padding: EdgeInsets.only(left: width * 0.03),
+                    //                           child: Column(
+                    //                             children: [
+                    //                               Text(snapshot.data!.articles![index].title.toString(),
+                    //                                   maxLines: 3,
+                    //                                   style: GoogleFonts.poppins().copyWith(
+                    //                                       color: Colors.black,
+                    //                                       fontWeight: FontWeight.w700,
+                    //                                       fontSize: 15)),
+                    //                               Spacer(),
+                    //                               Row(
+                    //                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //                                 children: [
+                    //                                   Text(snapshot.data!.articles![index].source!.name.toString(),
+                    //                                       style: GoogleFonts.poppins().copyWith(
+                    //                                           color: Colors.black,
+                    //                                           fontWeight: FontWeight.w600,
+                    //                                           fontSize: 14)),
+                    //                                   Text(format.format(date),
+                    //                                       style: GoogleFonts.poppins().copyWith(
+                    //                                           color: Colors.black,
+                    //                                           fontWeight: FontWeight.w500,
+                    //                                           fontSize: 15)),
+                    //                                 ],
+                    //                               ),
+                    //                             ],
+                    //                           ),
+                    //                         )
+                    //                     ),
+                    //
+                    //                   ],
+                    //                 ),
+                    //               ),
+                    //             );
+                    //           },
+                    //         );
+                    //       }
+                    //     },
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
