@@ -21,9 +21,10 @@ class NewsRepository{
   Future<CategoriesNewsModel> fetchCategoriesNewsApi(String categoryName)async{
     String url = 'https://newsapi.org/v2/everything?q=${categoryName}&apiKey=deb43f06e1f54aacb0fac132a4ada187';
     final response = await http.get(Uri.parse(url));
-    final data = jsonDecode(response.body);
+    final data = jsonDecode(response.body.toString());
     if(response.statusCode == 200){
       return CategoriesNewsModel.fromJson(data);
+
     }else{
       throw Exception("Error");
     }

@@ -118,7 +118,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: FutureBuilder(
                       future: newsViewModel.fetchNewsChannelHeadlineApi(name),
                       builder: (context,AsyncSnapshot<NewsChannelHeadlinesModel> snapshot) {
-                        if(snapshot.connectionState == ConnectionState.waiting){
+                        if(!snapshot.hasData){
+                          return SpinKitWave(
+                            color: Colors.black,
+                            size: 40,
+                          );
+                        }
+                        else if(snapshot.connectionState == ConnectionState.waiting){
                           return Container(
                             child: Center(
                               child: SpinKitWave(
@@ -231,7 +237,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: FutureBuilder(
                       future: newsViewModel.fetchCategoriesNewsApi(categoriesName),
                       builder: (context,AsyncSnapshot<CategoriesNewsModel> snapshot) {
-                        if(snapshot.connectionState == ConnectionState.waiting){
+                        if(!snapshot.hasData){
+                          return Container(
+                            child: Center(
+                              child: SpinKitWave(
+                                color: Colors.black,
+                                size: 40,
+                              ),
+                            ),
+                          );
+                        }
+                        else if(snapshot.connectionState == ConnectionState.waiting){
                           return Container(
                             child: Center(
                               child: SpinKitWave(
